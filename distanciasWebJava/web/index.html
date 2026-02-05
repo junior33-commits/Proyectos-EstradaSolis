@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Calculadora de Distancias</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.min.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap.min.css">
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2>Calculadora de Distancias</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input id="txtX1" type="text" class="form-control" placeholder="X1:"/>
+                                        <label for="txtX1">Valor de X1:</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input id="txtY1" type="text" class="form-control" placeholder="Y1:"/>
+                                        <label for="txtY1">Valor de Y1:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-3">
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input id="txtX2" type="text" class="form-control" placeholder="Valor de X2:"/>
+                                        <label for="txtX2">Valor de X2:</label>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-floating">
+                                        <input id="txtY2" type="text" class="form-control" placeholder="Y1:"/>
+                                        <label for="txtY2">Valor de Y2:</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 text-center">
+                                    <button class="btn btn-outline-primary" onclick="calcularDistancia(1);;">Euclidiana</button>
+                                    <button class="btn btn-outline-primary ml-4" onclick="calcularDistancia(2);">Manhattan</button>
+                                </div>
+                            </div>
+                            <div class="row mt-4">
+                                <div class="col-12 text-center">
+                                    <div class="form-floating">
+                                        <input id="txtResultado" type="text" class="form-control" placeholder="Resultado"/>
+                                        <label for="txtResultado">Resultado</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="style/bootstrap/js/bootstrap.min.js"></script>
+        <script src="style/bootstrap/js/bootstrap.bundle.min.js"></script>
+        <script src="js/principal.js"></script>
+    </body>
+</html>
+ 
