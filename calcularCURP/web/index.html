@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Calcular CURP">
+        <meta name="author" content="Christian Estrada">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-grid.css"/>
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.css"/>
+        <link rel="stylesheet" href="style/bootstrap/css/bootstrap-utilities.rtl.css"/>
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="text-center text-primary"> <h1>Calcula tu CURP</h1></div>
+                </div>
+            </div>
+            <div>
+                <div class="row">
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header">
+                                <div class="col-12">
+                                    <div>
+                                        <label for="txtPrimerNombre" class="form-label">Primer nombre</label>
+                                        <input id="txtPrimerNombre" type="text" class="form-control">
+                                        <label for="txtSegundoNombre" class="form-label">Segundo Nombre</label>
+                                        <input id="txtSegundoNombre" type="text" class="form-control">
+                                        <br>
+                                        
+                                        <label for="txtPrimerApellido" class="form-label">Primer Apellido</label>
+                                        <input id="txtPrimerApellido" type="text" class="form-control">
+                                        <label for="txtSegundorApellido" class="form-label">Segundo Apellido</label>
+                                        <input id="txtSegundoApellido" type="text" class="form-control">
+                                        <br> 
+                                        
+                                        <label for="txtSexo" class="form-label">Sexo</label> <br> 
+                                        
+                                        <input type="radio" id="txtSexo" name="sexo" value="H" required>
+                                        <label for="sexo-h">Hombre</label>
+
+                                        <input type="radio" id="txtSexo" name="sexo" value="M">
+                                        <label for="sexo-m">Mujer</label> <br>
+                                        
+                                        <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento</label> <br>
+                                        
+                                        <input id="fechaNacimiento" 
+                                               type="date" 
+                                               name="fechaNacimiento" 
+                                               onchange="validarFecha(this)" required>
+                                        <br>
+                                        <label for="txtEntidadNacimiento" class="form-label">Entidad de Nacimiento</label>
+                                    <select id="txtEntidadNacimiento" >
+                                    <option value="">Entidad Federativa</option>
+                                    <option value="AS">Aguascalientes (AS)</option>
+                                    <option value="BC">Baja California (BC)</option>
+                                    <option value="BS">Baja California Sur (BS)</option>
+                                    <option value="CC">Campeche (CC)</option>
+                                    <option value="CL">Coahuila (CL)</option>
+                                    <option value="CM">Colima (CM)</option>
+                                    <option value="CS">Chiapas (CS)</option>
+                                    <option value="CH">Chihuahua (CH)</option>
+                                    <option value="DF">Ciudad de México (DF)</option>
+                                    <option value="DG">Durango (DG)</option>
+                                    <option value="GT">Guanajuato (GT)</option>
+                                    <option value="GR">Guerrero (GR)</option>
+                                    <option value="HG">Hidalgo (HG)</option>
+                                    <option value="JC">Jalisco (JC)</option>
+                                    <option value="MC">México (MC)</option>
+                                    <option value="MN">Michoacán (MN)</option>
+                                    <option value="MS">Morelos (MS)</option>
+                                    <option value="NT">Nayarit (NT)</option>
+                                    <option value="NL">Nuevo León (NL)</option>
+                                    <option value="OC">Oaxaca (OC)</option>
+                                    <option value="PL">Puebla (PL)</option>
+                                    <option value="QT">Querétaro (QT)</option>
+                                    <option value="QR">Quintana Roo (QR)</option>
+                                    <option value="SP">San Luis Potosí (SP)</option>
+                                    <option value="SL">Sinaloa (SL)</option>
+                                    <option value="SR">Sonora (SR)</option>
+                                    <option value="TC">Tabasco (TC)</option>
+                                    <option value="TS">Tamaulipas (TS)</option>
+                                    <option value="TL">Tlaxcala (TL)</option>
+                                    <option value="VZ">Veracruz (VZ)</option>
+                                    <option value="YN">Yucatán (YN)</option>
+                                    <option value="ZS">Zacatecas (ZS)</option>
+                                    <option value="NE">Nacido en el Extranjero (NE)</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> <br>
+                        
+                        <button class="btn btn-primary" onclick="calcularCURP()">Calcula tu CURP</button>
+                    </div>
+                    <div class="col-4">
+                        <div class="card">
+                            <div class="card-header text-center">
+                                <h2>CURP Calculada</h2>
+                            </div>
+                            <div class="card-body">
+                                <div class="col-12" id="contenedorResultado">
+                                    <label for="txtResultado" class="form-label">Resultado</label>
+                                    <input id="txtResultado" class="form-control">
+                                </div>
+                                <br>
+                                
+                                <div class="col-6">
+                                    <button class="btn btn-secondary" onclick="limpiarCURP()">Calcular otra CURP</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script src="style/bootstrap/js/bootstrap.js"></script>
+    <script src="style/bootstrap/js/bootstrap.bundle.js"></script>
+    <script src="js/calc_CURP.js"></script>
+</html>
