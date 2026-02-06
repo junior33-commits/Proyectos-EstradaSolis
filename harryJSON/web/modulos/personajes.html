@@ -1,0 +1,156 @@
+<div id = "divDetalle" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center">
+                <span>Detalle del personaje</span>
+                <button class="float-end btn btn-sm btn-danger fw-bold ms-2 align-items-end"
+                        onclick="cm.setDetalleVisible(false);">X</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="width:156px; height:192px; background-color:green;">
+                        <img id="fotoPersonaje" style="width: 128px; height: 156px"/>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input id="txtIdPersonaje" type="text"
+                                           class="form-control" placeholder="ID Personaje"/>
+                                    <label for="txtIdPersonaje">ID:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtNombre" type="text"
+                                           class="form-control" placeholder="Nombre:"/>
+                                    <label for="txtNombre">Nombre:</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-floating">
+                                    <input id="txtEspecie" type="text"
+                                           class="form-control" placeholder="Especie:"/>
+                                    <label for="txtEspecie">Especie:</label>
+                                </div>
+                            </div>
+                            <div class="col-3">
+                                <div class="form-floating">
+                                    <input id="txtGenero" type="text"
+                                           class="form-control" placeholder="Genero:"/>
+                                    <label for="txtGenero">G&eacute;nero:</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtFechaNacimiento" type="text"
+                                           class="form-control" placeholder="FechaNacimiento:"/>
+                                    <label for="txtFechaNacimiento">Fecha Nacimiento:</label>
+                                </div>
+                            </div>  
+                            <div class="col-4 pt-3">
+                                <div class="form-check">
+                                    <input id="chbMago" type="checkbox" value=""
+                                           class="form-check-input"/>
+                                    <label for="chbMago" class="form-check-label">Mago</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtAscendencia" type="text"
+                                           class="form-control" placeholder="Ascendencia:"/>
+                                    <label for="txtAscendencia">Ascendencia:</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mt-2">
+                    <div class="col-3">
+                        <div class="form-floating">
+                            <input id="txtColorOjos" type="text"
+                                   class="form-control" placeholder="Color de ojos:"/>
+                            <label for="txtColorOjos">Color de ojos:</label>
+                        </div>
+                    </div>
+                    <div class="col-3">
+                        <div class="form-floating">
+                            <input id="txtColorCabello" type="text"
+                                   class="form-control" placeholder="Color de cabello:"/>
+                            <label for="txtColorCabello">Color de cabello:</label>
+                        </div>
+                    </div>
+                    <div class="col-3 pt-3">
+                        <div class="form-check">
+                            <input id="chbEstudiante" type="checkbox" value=""
+                                   class="form-check-input"/>
+                            <label for="chbEstudiante" class="form-check-label">Estudiante</label>
+                        </div>
+                    </div>
+                    <div class="col-3 pt-3">
+                        <div class="form-check">
+                            <input id="chbTrabajador" type="checkbox" value=""
+                                   class="form-check-input"/>
+                            <label for="chbTrabajador" class="form-check-label">Trabajador</label>
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <h5>Datos de varita magica</h5>
+                <div class="row mt-2">
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtTipoMadera" type="text"
+                                   class="form-control" placeholder="Tipo de Madera:"/>
+                            <label for="txtTipoMadera">Tipo de Madera:</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtNucleo" type="text"
+                                   class="form-control" placeholder="Núcleo:"/>
+                            <label for="txtNucleo">N&uacute;cleo:</label>
+                        </div>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-floating">
+                            <input id="txtLongitud" type="text"
+                                   class="form-control" placeholder="Longitud:"/>
+                            <label for="txtLongitud">Longitud:</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="divCatalogo" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Cat&aacute;logo de Personajes</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Especie</th>
+                            <th>Casa</th>
+                            <th>Mago</th>
+                            <th>Actor</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyPersonajes">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
