@@ -1,0 +1,92 @@
+<div id="divDetalleVehiculo" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <span>Detalle del Vehículo</span>
+                <button class="float-end btn btn-sm btn-danger fw-bold ms-2 align-items-end"
+                        onclick="cm.setDetalleVisible(false);">X</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="width:156px; height:192px; background-color:blue;">
+                        <img id="fotoVehiculo" style="width:128px; height:156px;">
+                    </div>
+
+                    <div class="col">
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input id="txtNombreVehiculo" type="text" class="form-control" placeholder="">
+                                    <label for="txtNombreVehiculo">Nombre</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtModelo" type="text" class="form-control" placeholder="">
+                                    <label for="txtModelo">Modelo</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtFabricante" type="text" class="form-control" placeholder="">
+                                    <label for="txtFabricante">Fabricante</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtCosto" type="text" class="form-control" placeholder="">
+                                    <label for="txtCosto">Costo</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtLongitud" type="text" class="form-control" placeholder="">
+                                    <label for="txtLongitud">Longitud</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtVelocidad" type="text" class="form-control" placeholder="">
+                                    <label for="txtVelocidad">Velocidad Máx.</label>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div id="divCatalogoVehiculos">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Catálogo de Vehículos</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Modelo</th>
+                            <th>Fabricante</th>
+                            <th>Costo</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyVehiculos"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

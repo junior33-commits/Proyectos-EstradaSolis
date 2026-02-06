@@ -1,0 +1,117 @@
+<div id="divDetallePlaneta" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-between">
+                <span>Detalle del Planeta</span>
+                <button class="float-end btn btn-sm btn-danger fw-bold ms-2 align-items-end"
+                        onclick="cm.setDetalleVisible(false);">X</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="width:156px; height:192px; background-color:green;">
+                        <img id="fotoPlaneta" style="width: 128px; height: 156px"/>
+                    </div>
+                    <div class="col">
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input id="txtNombrePlaneta" type="text"
+                                           class="form-control" placeholder="Nompre Planeta">
+                                    <label for="txtNombrePlaneta">Nombre</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtPeriodoRotacion" type="text"
+                                           class="form-control" placeholder="Periodo de Rotacion"/>
+                                    <label for="txtPeriodoRotacion">Rotaci&oacute;n</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtPeriodoOrbita" type="text"
+                                           class="form-control" placeholder="Orbita"/>
+                                    <label for="txtPeriodoOrbita">Periodo de &Oacute;rbita</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtDiametro" type="text"
+                                           class="form-control" placeholder="Diametro"/>
+                                    <label for="txtDiametro">Diametro</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtClima" type="text"
+                                           class="form-control" placeholder="Clima"/>
+                                    <label for="txtClima">Clima</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtGravedad" type="text"
+                                           class="form-control" placeholder="Gravedad"/>
+                                    <label for="txtGravedad">Gravedad</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtAgua" type="text"
+                                           class="form-control" placeholder="Agua"/>
+                                    <label for="txtAgua">Agua Superficial</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtPoblacion" type="text"
+                                           class="form-control" placeholder="Poblacion"/>
+                                    <label for="txtPoblacion">Poblaci&oacute;n</label>
+                                </div>
+                            </div>
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtTierra" type="text"
+                                           class="form-control" placeholder="Tierra"/>
+                                    <label for="txtTierra">Tierra</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="divCatalogoPlanetas">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Cat&aacute;logo de Planetas</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Clima</th>
+                            <th>Poblaci&oacute;n</th>
+                            <th>Tierra</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyPlanetas">
+                        
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

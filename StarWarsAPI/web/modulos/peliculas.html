@@ -1,0 +1,84 @@
+<div id="divDetallePelicula" class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header d-flex align-items-center justify-content-betweenr">
+                <span>Detalle de Película</span>
+                <button class="float-end btn btn-sm btn-danger fw-bold ms-2 align-items-end"
+                        onclick="cm.setDetalleVisible(false);">X</button>
+            </div>
+            <div class="card-body">
+                <div class="row">
+                    <div style="width:156px; height:192px; background-color:gray;">
+                        <img id="fotoPelicula" style="width:128px; height:156px;">
+                    </div>
+                    <div class="col">
+                        <div class="row mt-2">
+                            <div class="col-12">
+                                <div class="form-floating">
+                                    <input id="txtTituloPelicula" type="text" class="form-control" placeholder="">
+                                    <label for="txtTituloPelicula">Título</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtDirector" type="text" class="form-control" placeholder="">
+                                    <label for="txtDirector">Director</label>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="form-floating">
+                                    <input id="txtProductor" type="text" class="form-control" placeholder="">
+                                    <label for="txtProductor">Productor</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row mt-3">
+                            <div class="col-4">
+                                <div class="form-floating">
+                                    <input id="txtFechaEstreno" type="text" class="form-control" placeholder="">
+                                    <label for="txtFechaEstreno">Fecha Estreno</label>
+                                </div>
+                            </div>
+                            <div class="col-8">
+                                <div class="form-floating">
+                                    <textarea id="txtApertura" class="form-control" placeholder=""></textarea>
+                                    <label for="txtApertura">Sinopsis</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+
+<div id="divCatalogoPeliculas">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4>Catálogo de Películas</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>Título</th>
+                            <th>Episodio</th>
+                            <th>Director</th>
+                            <th>Fecha Estreno</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="tbodyPeliculas"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
