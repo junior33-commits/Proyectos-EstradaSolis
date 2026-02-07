@@ -1,0 +1,409 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package Ejemplo15;
+import com.mysql.cj.jdbc.result.ResultSetFactory;
+import java.sql.Connection;
+import java.sql.Statement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.table.DefaultTableModel;
+
+/**
+ *
+ * @author DELL
+ */
+public class RegistroConferencias extends javax.swing.JFrame {
+    DefaultComboBoxModel micombo;
+    DefaultTableModel mitabla;
+    Connection c;
+    Statement t;
+    ResultSet r;
+    ConexionMySQL mic;
+    Conferencia cof;
+    
+    /**
+     * Creates new form RegistroConferencias
+     */
+    public RegistroConferencias() throws SQLException {
+        initComponents();
+        mic = new ConexionMySQL("eventos2");
+        mic.conectar();
+        c = mic.getConexion();
+        t =  c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String sql = "Select * from conferencias";
+        r = t.executeQuery(sql);
+        if (r.first()){
+            mostrarDatos();
+        }else {
+            limpiar();
+        }
+        
+        iniciariTabla();
+        llenarTabla();
+        llenarCombo();
+    }
+    public void mostrarDatos() throws SQLException{
+        this.jTextField1.setText(String.valueOf(r.getString(1)));
+        this.jTextField2.setText(String.valueOf(r.getString(2)));
+        this.jTextField3.setText(String.valueOf(r.getString(3)));
+        this.jTextField4.setText(String.valueOf(r.getString(4)));
+        this.jTextField5.setText(String.valueOf(r.getString(5)));
+        this.jTextField6.setText(String.valueOf(r.getString(6)));
+    }
+    public void iniciariTabla(){
+        mitabla = new DefaultTableModel();
+        mitabla.addColumn("Id");
+        mitabla.addColumn("Titulo");
+        mitabla.addColumn("Fecha");
+        mitabla.addColumn("Hora");
+        mitabla.addColumn("Ubicacion");
+        mitabla.addColumn("IdConfe");
+        this.jTable1.setModel(mitabla);
+    }
+    public void llenarTabla() throws SQLException{
+        t = null;
+        t = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String sql = "Select * from conferencias";
+        r = t.executeQuery(sql);
+        r.beforeFirst();
+        while(r.next()){
+            mitabla = (DefaultTableModel)this.jTable1.getModel();
+            Object [] datos = {r.getString(1), r.getString(2), r.getString(3), r.getString(4), r.getString(5), r.getString(6)};
+            mitabla.addRow(datos);
+            this.jTable1.setModel(mitabla);
+        }
+        
+    }
+    public void llenarCombo() throws SQLException{
+        micombo = new DefaultComboBoxModel();
+        t = null;
+        t = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String sql = "Select Id from conferencistas";
+        r = t.executeQuery(sql);
+        r.beforeFirst();
+        while(r.next()){
+            micombo.addElement(r.getString(1));
+            this.jComboBox1.setModel(micombo);
+        }
+    }
+    public void limpiar(){
+        this.jTextField1.setText(null);
+        this.jTextField2.setText(null);
+        this.jTextField3.setText(null);
+        this.jTextField4.setText(null);
+        this.jTextField5.setText(null);
+        this.jTextField6.setText(null);
+        this.jTextField1.requestFocus();
+    }
+    public void añadir(Conferencia cof) throws SQLException{
+        t = null;
+        t = c.createStatement();
+        String sql = "Insert into conferencias values("+cof.getId()+
+                     ", '"+cof.getTitulo()+"', '"+cof.getFecha()+"', '"+cof.getHora()+"', '"+cof.getUbiciacion()+
+                     "',"+cof.getIdConferencista()+")";
+        t.executeUpdate(sql);
+        t = null;
+        t = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String sql2 = "Select * from conferencistas";
+        r = t.executeQuery(sql2);
+        r.first();
+        mostrarDatos();
+        iniciariTabla();
+        llenarTabla();
+    }
+    public void eliminar(int id) throws SQLException{
+        t = null;
+        t = c.createStatement();
+        String sql = "DELETE from conferencias WHERE Id="+id;
+        t.executeUpdate(sql);
+        t = null;
+        t = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+        String sql2 = "Select * from conferencias";
+        r = t.executeQuery(sql2);
+        r.first();
+        mostrarDatos();
+        iniciariTabla();
+        llenarTabla();
+    }
+    /**
+     * This method is called from within the constructor to initialize the form.
+     * WARNING: Do NOT modify this code. The content of this method is always
+     * regenerated by the Form Editor.
+     */
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        jTextField6 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jLabel8 = new javax.swing.JLabel();
+        btnNuevo = new javax.swing.JButton();
+        btnGuardar = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 3, 36)); // NOI18N
+        jLabel1.setText("Registro de Conferencias ");
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 40, 460, -1));
+
+        jPanel2.setBackground(new java.awt.Color(0, 153, 153));
+        jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos Conferencia ", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Segoe UI", 3, 14))); // NOI18N
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setText("jTextField1");
+        jPanel2.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 80, 170, -1));
+
+        jTextField2.setText("jTextField2");
+        jPanel2.add(jTextField2, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 110, 170, -1));
+
+        jTextField3.setText("jTextField3");
+        jPanel2.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 140, 170, -1));
+
+        jTextField4.setText("jTextField4");
+        jPanel2.add(jTextField4, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 170, 170, -1));
+
+        jTextField5.setText("jTextField5");
+        jPanel2.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 200, 170, -1));
+
+        jTextField6.setEditable(false);
+        jTextField6.setText("jTextField6");
+        jPanel2.add(jTextField6, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 240, 100, -1));
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setText("ID Conferencia");
+        jPanel2.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 110, -1));
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setText("Titulo");
+        jPanel2.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, 80, -1));
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Fecha");
+        jPanel2.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 70, -1));
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setText("Hora");
+        jPanel2.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 170, 60, 20));
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setText("Ubicación ");
+        jPanel2.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 200, 90, -1));
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setText("ID Conferencista");
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 240, -1, -1));
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        jPanel2.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 240, 100, -1));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("jLabel8");
+        jPanel2.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 290, 190, -1));
+
+        btnNuevo.setText("Nuevo");
+        btnNuevo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnNuevoMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnNuevo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 80, -1, -1));
+
+        btnGuardar.setText("Guardar");
+        btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnGuardarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnGuardar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 120, -1, -1));
+
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnEliminarMouseClicked(evt);
+            }
+        });
+        jPanel2.add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 160, -1, -1));
+
+        jPanel1.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 140, 430, 440));
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 150, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 960, 600));
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void btnNuevoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnNuevoMouseClicked
+        // TODO add your handling code here:
+        limpiar();
+    }//GEN-LAST:event_btnNuevoMouseClicked
+
+    private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
+        // TODO add your handling code here:
+        int i, idCon;
+        String t, f, h, u;
+        i = Integer.parseInt(this.jTextField1.getText());
+        t = this.jTextField2.getText();
+        f = this.jTextField3.getText();
+        h = this.jTextField4.getText();
+        u = this.jTextField5.getText();
+        idCon = Integer.parseInt(this.jComboBox1.getSelectedItem().toString());
+        cof = new Conferencia(i, t, f, h, u, idCon);
+        try {
+            añadir(cof);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroConferencias.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_btnGuardarMouseClicked
+
+    private void btnEliminarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnEliminarMouseClicked
+        // TODO add your handling code here:
+        try {
+            int x = Integer.parseInt(this.jTextField1.getText());
+            eliminar(x);
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroConferencias.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_btnEliminarMouseClicked
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        // TODO add your handling code here:
+        int fila = this.jTable1.getSelectedRow();
+        int id = Integer.parseInt((String)jTable1.getValueAt(ERROR, fila));
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+        int i = Integer.parseInt(this.jComboBox1.getSelectedItem().toString());
+        try {
+            t = null;
+            t = c.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,ResultSet.CONCUR_UPDATABLE);
+            String sql = "Select nombre, apellido1, apellido2 from conferencistas";
+            r = t.executeQuery(sql);
+            r.first();
+            this.jLabel8.setText(r.getString(1+" "+r.getString(2)+" "+r.getString(3)));
+        } catch (SQLException ex) {
+            Logger.getLogger(RegistroConferencias.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(RegistroConferencias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(RegistroConferencias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(RegistroConferencias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(RegistroConferencias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                try {
+                    new RegistroConferencias().setVisible(true);
+                } catch (SQLException ex) {
+                    Logger.getLogger(RegistroConferencias.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
+    private javax.swing.JButton btnGuardar;
+    private javax.swing.JButton btnNuevo;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JTextField jTextField6;
+    // End of variables declaration//GEN-END:variables
+}
